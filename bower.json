@@ -9,7 +9,7 @@
     }
   ],
   "description": "WCAG Plugin for Trumbowyg Wysiwyg editor",
-  "main": "src/tablemanager.js",
+  "main": "src/wcag.js",
   "keywords": [
       "wysiwyg",
       "javascript",
