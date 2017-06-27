@@ -1,0 +1,30 @@
+{
+  "name": "trumbowyg-wcag",
+  "homepage": "https://github.com/sinr0202/Trumbowyg-WCAG",
+  "authors": [
+    {
+        "name": "Richard Sin",
+        "email": "rsin@websby.com",
+        "homepage": "http://www.kimchirichie.com"
+    }
+  ],
+  "description": "WCAG Plugin for Trumbowyg Wysiwyg editor",
+  "main": "src/tablemanager.js",
+  "keywords": [
+      "wysiwyg",
+      "javascript",
+      "richtext",
+      "wcag"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "trumbowyg": ">=2.3.0"
+  }
+}
