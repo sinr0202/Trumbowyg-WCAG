@@ -25,12 +25,11 @@
 	},
 	// Checks for alt text in images
 	_1_1_1 = function(elm, lvl){
-		// d('1.1.1', lvl, elm);
+		d('1.1.1', lvl, elm);
 
 		// Add more tags below array
 		if(['IMG'].indexOf(elm.nodeName)>-1 && !elm.getAttribute('alt')){
 			elm.className += (" " +classList[0].class);
-			// tooltip(elm, "");
 		}
 		var len = elm.childNodes.length
 		for(var i=0; i<len; i++){
@@ -39,12 +38,11 @@
 	},
 	// Checks for summary in tables
 	_1_3_1 = function(elm, lvl){
-		// d('1.3.1', lvl, elm)
+		d('1.3.1', lvl, elm)
 
 		// Add more tags below array
 		if(['TABLE'].indexOf(elm.nodeName)>-1 && !elm.getAttribute('summary')){
 			elm.className += (" " +classList[1].class);
-			// tooltip(elm, "Add Table Summary");
 		}
 		var len = elm.childNodes.length
 		for(var i=0; i<len; i++){
@@ -116,20 +114,16 @@
 						child.classList.remove(classList[j].class);
 					}
 				}
-				// return;
 			}
 			clearWcag(child, lvl+1)
 		}
 	},
 	refresh = function(t){
-		console.log('clear')
-		// console.clear();
-		clearWcag(t.$c[0],0)
-		_1_1_1(t.$c[0],0);
-		_1_3_1(t.$c[0],0);
-		insertTooltip(t.$c[0],0)
+		clearWcag(t.$ed[0],0)
+		_1_1_1(t.$ed[0],0);
+		_1_3_1(t.$ed[0],0);
+		insertTooltip(t.$ed[0],0)
 		// t.syncTextarea();
-
 	}
 
 	$.extend(true, $.trumbowyg, {
@@ -141,13 +135,24 @@
 		plugins: {
 			wcag: {
 				init: function (trumbowyg) {
+					trumbowyg.o.plugins.wcag = false;
 					trumbowyg.addBtnDef('wcag', {
 						ico: "wcag", // change the icon later
 						fn: function () {
+							trumbowyg.o.plugins.wcag = !trumbowyg.o.plugins.wcag;
+							if(!trumbowyg.o.plugins.wcag){
+								// didnt find any other way to make it toggle on and off so just adding class brute force
+								// if there is a better way to make the button toggle in the future, change this behaviour
+								$(".trumbowyg-wcag-button").removeClass("trumbowyg-active")
+								clearWcag(trumbowyg.$ed[0],0)
+							} else {
+								$(".trumbowyg-wcag-button").addClass("trumbowyg-active")
+							}
+						}
+					});
+					trumbowyg.$c.on('tbwchange',function(){
+						if(trumbowyg.o.plugins.wcag){
 							refresh(trumbowyg)
-							// trumbowyg.$c.on('tbwchange',function(){
-							// 	refresh(trumbowyg)
-							// });
 						}
 					});
 				}
