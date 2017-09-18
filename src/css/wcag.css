@@ -1,16 +1,16 @@
-.no-alt, .no-summary {
+.trumbowyg-wcag-no-alt, .trumbowyg-wcag-no-summary {
 	border:3px solid red
 }
 
 /* Tooltip container */
-.tooltip {
+.trumbowyg-wcag-tooltip {
 	position: relative;
 	display: inline-block;
 	border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
 }
 
 /* Tooltip text */
-.tooltip .tooltiptext {
+.trumbowyg-wcag-tooltip .trumbowyg-wcag-tooltiptext {
 	visibility: hidden;
 	width: 120px;
 	background-color: black;
@@ -32,11 +32,11 @@
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
+.trumbowyg-wcag-tooltip:hover .trumbowyg-wcag-tooltiptext {
 	visibility: visible;
 }
 
-.tooltip .tooltiptext::after {
+.trumbowyg-wcag-tooltip .trumbowyg-wcag-tooltiptext::after {
     content: " ";
     position: absolute;
     bottom: 100%;  /* At the top of the tooltip */
@@ -45,9 +45,4 @@
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent black transparent;
-}
-
-#trumbowyg-wcag{
-	width:1px;
-
 }

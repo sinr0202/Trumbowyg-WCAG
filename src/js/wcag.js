@@ -10,8 +10,8 @@
 	// 'use strict';
 	var debug = false;
 	var classList = [
-			{class:'no-alt', msg:'Add Alternative Text'},
-			{class:'no-summary', msg:'Add Table Summary'}
+			{class:'trumbowyg-wcag-no-alt', msg:'Add Alternative Text'},
+			{class:'trumbowyg-wcag-no-summary', msg:'Add Table Summary'}
 		];
 
 	var d = function(rule, lvl, elm){
@@ -54,8 +54,8 @@
 		var clone = elm.cloneNode(true);
 		var div = document.createElement('span');
 		var span = document.createElement('span');
-		div.className += (" tooltip");
-		span.className += (" tooltiptext");
+		div.className += (" trumbowyg-wcag-tooltip");
+		span.className += (" trumbowyg-wcag-tooltiptext");
 		span.innerHTML = text;
 		div.appendChild(clone);
 		div.appendChild(span);
@@ -106,9 +106,8 @@
 		for(var i=0; i<len; i++){
 			var child = elm.childNodes[i];
 			if(child.classList){
-				if(child.classList.contains('tooltip')){
+				if(child.classList.contains('trumbowyg-wcag-tooltip')){
 					child = clearTooltip(child);
-					if (child === false) continue;
 				}
 				for(var j=0; j<classList.length; j++){
 					if(child.classList.contains(classList[j].class)){
@@ -163,6 +162,9 @@
 						//check that wcag is toggled on and that the modal is not opened
 						if(trumbowyg.o.plugins.wcag && modalClosed) {
 							refresh(trumbowyg)
+							if(!$(".trumbowyg-wcag-button")[0].classList.contains("trumbowyg-active")){
+								$(".trumbowyg-wcag-button").addClass("trumbowyg-active")
+							}
 						}
 					});
 
